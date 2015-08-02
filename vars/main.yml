@@ -1,0 +1,5 @@
+---
+# vars file for ansible-cloudflare-purge
+cloudflare_purge_urls: "{{ lookup('file',cloudflare_purge_from_file) | from_yaml }}"
+cloudflare_purge_body:
+  files: "{{ cloudflare_purge_urls }}"

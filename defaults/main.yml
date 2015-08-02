@@ -1,0 +1,9 @@
+---
+# defaults file for ansible-cloudflare-purge
+cloudflare_purge_zone: CLOUDFLARE_PURGE_ZONE
+cloudflare_purge_email: CLOUDFLARE_EMAIL
+cloudflare_purge_key: CLOUDFLARE_KEY
+cloudflare_purge_from_file: urls.yml
+cloudflare_purge_urls: [ ]
+cloudflare_purge_body:
+  files: [ ]

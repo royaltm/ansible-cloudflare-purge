@@ -1,0 +1,13 @@
+---
+# tasks file for ansible-cloudflare-purge
+
+# be AWARE that long-form parameters do not work due to the implicit string to struct conversions
+# here: https://github.com/ansible/ansible/issues/7005
+- name: Purge CloudFlare caches
+  uri: >
+    body='{{cloudflare_purge_body|to_json}}'
+    url=https://api.cloudflare.com/client/v4/zones/{{cloudflare_purge_zone}}/purge_cache
+    method=DELETE
+    body_format=json
+    HEADER_X-Auth-Email='{{cloudflare_purge_email}}'
+    HEADER_X-Auth-Key='{{cloudflare_purge_key}}'
