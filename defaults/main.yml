@@ -7,3 +7,7 @@ cloudflare_purge_from_file: urls.yml
 cloudflare_purge_urls: [ ]
 cloudflare_purge_body:
   files: [ ]
+cloudflare_purge_body_enterprise: 
+tags: []
+hosts: []
+prefixes: []

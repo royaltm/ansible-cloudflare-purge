@@ -1,0 +1,12 @@
+{
+    {%- if tags -%}
+    "tags": {{ tags }}
+    {%- if hosts or prefixes -%},
+    {%- endif -%}{%- endif -%}
+    {%- if hosts -%}
+    "hosts": {{ hosts }}{%- if prefixes -%},
+    {%- endif -%}{%- endif -%}
+    {%- if prefixes -%}
+    "prefixes": {{ prefixes }}
+    {%- endif -%}
+}

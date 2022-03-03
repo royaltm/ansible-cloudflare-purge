@@ -4,10 +4,27 @@
 # be AWARE that long-form parameters do not work due to the implicit string to struct conversions
 # here: https://github.com/ansible/ansible/issues/7005
 - name: Purge CloudFlare caches
-  uri: >
-    body='{{cloudflare_purge_body|to_json}}'
-    url=https://api.cloudflare.com/client/v4/zones/{{cloudflare_purge_zone}}/purge_cache
-    method=DELETE
-    body_format=json
-    HEADER_X-Auth-Email='{{cloudflare_purge_email}}'
-    HEADER_X-Auth-Key='{{cloudflare_purge_key}}'
+  uri:
+    body: "{{cloudflare_purge_body|to_json}}"
+    url: "https://api.cloudflare.com/client/v4/zones/{{ cloudflare_purge_zone }}/purge_cache"
+    method: DELETE
+    body_format: json
+    headers:
+      X-Auth-Email: "{{cloudflare_purge_email}}"
+      X-Auth-Key: "{{cloudflare_purge_key}}"
+  when: cloudflare_purge_urls
+
+- name: End play if purged urls
+  meta: end_play
+  when: cloudflare_purge_urls
+
+- name: Purge Cloudflare by other
+  uri:
+    body: "{{ cloudflare_purge_body_enterprise }}"
+    url: "https://api.cloudflare.com/client/v4/zones/{{ cloudflare_purge_zone }}/purge_cache"
+    method: POST
+    body_format: json
+    headers:
+      X-Auth-Email: "{{cloudflare_purge_email}}"
+      X-Auth-Key: "{{cloudflare_purge_key}}"
+  when: cloudflare_purge_body_enterprise
