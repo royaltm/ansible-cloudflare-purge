@@ -27,4 +27,4 @@
     headers:
       X-Auth-Email: "{{cloudflare_purge_email}}"
       X-Auth-Key: "{{cloudflare_purge_key}}"
-  when: cloudflare_purge_body_enterprise
+  when: hosts or tags or prefixes
