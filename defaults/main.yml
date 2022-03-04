@@ -8,6 +8,6 @@ cloudflare_purge_urls: [ ]
 cloudflare_purge_body:
   files: [ ]
 cloudflare_purge_body_enterprise: 
-tags: []
-hosts: []
-prefixes: []
+cloudflare_purge_tags: []
+cloudflare_purge_hosts: []
+cloudflare_purge_prefixes: []
