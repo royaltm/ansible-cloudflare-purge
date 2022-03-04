@@ -1,0 +1,12 @@
+{
+    {%- if cloudflare_purge_tags -%}
+    "tags": {{ cloudflare_purge_tags }}
+    {%- if cloudflare_purge_hosts or cloudflare_purge_prefixes -%},
+    {%- endif -%}{%- endif -%}
+    {%- if cloudflare_purge_hosts -%}
+    "hosts": {{ cloudflare_purge_hosts }}{%- if cloudflare_purge_prefixes -%},
+    {%- endif -%}{%- endif -%}
+    {%- if cloudflare_purge_prefixes -%}
+    "prefixes": {{ cloudflare_purge_prefixes }}
+    {%- endif -%}
+}
